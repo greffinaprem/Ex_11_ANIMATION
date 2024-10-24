@@ -11,17 +11,119 @@ Android Studio(Latest Version)
 
 ## ALGORITHM:
 
-Step 1 : Set up Android Studio with necessary dependencies for creating animations.
-Step 2 : Create a layout with an ImageView and several Button elements for different animations.
-Step 3 : Write the XML files for various animations (e.g., blink, slide, zoom, fade).
-Step 4 : Implement animation methods (e.g., clockwise(), zoom(), blink(), fade(), slide()) in the MainActivity.java to trigger the animations.
-Step 5 : Link the animation XML files to the corresponding methods in MainActivity.java.
-Step 6 : Build and run the application to animate the image based on button clicks.
+1.Start a new Android project in Android Studio.
+2.Create UI elements (TextView, ImageView, Buttons) in activity_main.xml.
+3.Define animations in the res/anim directory (blink.xml, fade.xml, zoom.xml, clockwise.xml, etc.).
+4.Implement the animation logic in MainActivity.java by loading and applying the animations to the ImageView.
+5.Link buttons to their respective animation methods using the onClick attribute.
+6.Run the app to verify the animations.
 
 ## PROGRAM:
-### MainActivity.java:
 ```
-package com.example.ex11;
+/*
+Program to display animation operation”.
+Developed by: GREFFINA SANCHEZ P
+Registeration Number : 212222040048
+*/
+```
+
+## OUTPUT
+## In activity_main.xml
+```
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Animation"
+        android:id="@+id/textView"
+        android:textSize="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="20dp"
+        android:layout_height="100dp"
+        android:paddingTop="10dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="zoom"
+        android:id="@+id/button"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp"
+        android:onClick="clockwise"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="clockwise"
+        android:id="@+id/button2"
+        android:layout_alignTop="@+id/button"
+        android:layout_centerHorizontal="true"
+        android:onClick="zoom"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="fade"
+        android:id="@+id/button3"
+        android:layout_alignTop="@+id/button2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="fade"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="blink"
+        android:onClick="blink"
+        android:id="@+id/button4"
+        android:layout_below="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="119dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button3"
+        android:layout_marginStart="-138dp"
+        android:layout_marginLeft="-138dp"
+        android:layout_marginTop="9dp"
+        android:layout_toEndOf="@+id/textView"
+        android:layout_toRightOf="@+id/textView"
+        android:onClick="slide"
+        android:text="slide" />
+
+</RelativeLayout>
+
+```
+
+## MainActivity.java
+```
+package com.example.ex_9;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -81,122 +183,13 @@ public class MainActivity extends AppCompatActivity {
         image.startAnimation(animation1);
     }
 }
+
 ```
-### Activity_Main.XML:
-```
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:paddingTop="20dp"
-    android:paddingBottom="20dp"
-    android:background="#000000"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Animation"
-        android:id="@+id/textView"
-        android:textSize="35dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="#000000"
-        android:textColor="#FF0000"
-        android:textStyle="bold"/>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="180dp"
-        android:paddingTop="10dp"
-        android:layout_below="@+id/textView"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
-        app:srcCompat="@drawable/spider" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="zoom"
-        android:id="@+id/button"
-        android:layout_below="@+id/imageView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="40dp"
-        android:onClick="clockwise"
-        android:backgroundTint="#FF1200"
-        android:textColor="#000000"
-        android:textStyle="bold"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="clockwise"
-        android:id="@+id/button2"
-        android:layout_alignTop="@+id/button"
-        android:layout_centerHorizontal="true"
-        android:onClick="zoom"
-        android:backgroundTint="#FF1200"
-        android:textColor="#000000"
-        android:textStyle="bold"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="fade"
-        android:id="@+id/button3"
-        android:layout_alignTop="@+id/button2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="fade"
-        android:backgroundTint="#FF1200"
-        android:textColor="#000000"
-        android:textStyle="bold"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="blink"
-        android:onClick="blink"
-        android:id="@+id/button4"
-        android:layout_below="@+id/button"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:backgroundTint="#FF1200"
-        android:textColor="#000000"
-        android:textStyle="bold"/>
-
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="119dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button3"
-        android:layout_marginStart="-138dp"
-        android:layout_marginLeft="-138dp"
-        android:layout_marginTop="9dp"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_toRightOf="@+id/textView"
-        android:onClick="slide"
-        android:text="slide"
-        android:backgroundTint="#FF1200"
-        android:textColor="#000000"
-        android:textStyle="bold"/>
-
-</RelativeLayout>
-```
-Blink.XML
+## blink.xml
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android">
-    <alpha
-        android:fromAlpha="0.0"
+    <alpha android:fromAlpha="0.0"
         android:toAlpha="1.0"
         android:interpolator="@android:anim/accelerate_interpolator"
         android:duration="500"
@@ -204,7 +197,7 @@ Blink.XML
         android:repeatCount="infinite"/>
 </set>
 ```
-Clockwise.XML
+## clockwise.xml
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android">
@@ -226,8 +219,9 @@ Clockwise.XML
         android:duration="5000" >
     </rotate>
 </set>
+
 ```
-Fade.XML
+## Fade.xml
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android"
@@ -245,8 +239,9 @@ Fade.XML
         android:toAlpha="0" />
 
 </set>
+
 ```
-Myanimation.XML
+## Myanimation.xml
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android">
@@ -271,8 +266,11 @@ Myanimation.XML
         android:pivotY="50%" >
     </scale>
 </set>
+
 ```
-Slide.XML
+
+## Slide.xml
+
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android"
@@ -285,8 +283,9 @@ Slide.XML
         android:toXScale="1.0"
         android:toYScale="0.0" />
 </set>
+
 ```
-Zoom.XML
+## Zoom.xml
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android"
@@ -300,29 +299,14 @@ Zoom.XML
         android:toXScale="1.0"
         android:toYScale="0.0" />
 </set>
+
 ```
+
 ## OUTPUT:
+![image](https://github.com/user-attachments/assets/f4c8388b-e014-4551-a193-efa2e65a9a31)
 
-### Home Screen
-<img src="1.png" width="400">
+![image](https://github.com/user-attachments/assets/70f445fb-e42b-4db1-a4c2-c3f54b67017f)
 
-### Zoom
-<img src="2.png" width="400">
+## RESULT
 
-### Clocwise
-<img src="3.png" width="400">
-
-### Fade
-<img src="4.png" width="400">
-
-### Blink
-<img src="5.png" width="400">
-
-### Slide
-<img src="6.png" width="400">
-
-### Directory
-<img src="7.png">
-
-## RESULT:
-The Android application was successfully developed to add animations (move, blink, fade, clockwise, zoom, and slide) to an ImageView using Android Studio.
+The application was successfully developed to add animations (move, blink, fade, clockwise, zoom, and slide) to an ImageView. Upon interacting with the UI, the animations are applied as expected.
